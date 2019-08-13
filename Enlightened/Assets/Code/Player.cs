@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         if (/*Input.GetAxisRaw("Vertical") > 0 ||*/ Input.GetKeyDown(KeyCode.Space))
         {
             print("Player Is Jumping");
-            rig.AddForce(new Vector2(0,jumpForce));
+            rig.AddForce(new Vector2(0, jumpForce));
             anim.SetTrigger("Jump");
         }
     }
