@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
     private void Play()
     {
         if (!PlayerPrefs.HasKey("UnlockedLevel"))
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("Level01");
 
         else
         {
@@ -73,6 +73,6 @@ public class UIManager : MonoBehaviour
         PlayerPrefs.SetInt("UnlockedLevel", 1);
     }
 
-    private void PlayLevel(int index) => SceneManager.LoadScene("Level" + index);
+    private void PlayLevel(int index) => SceneManager.LoadScene("Level0" + index);
     #endregion
 }
