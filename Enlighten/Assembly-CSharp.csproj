@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Code\ButtonAnimHandler.cs" />
+    <Compile Include="Assets\Code\Floater.cs" />
     <Compile Include="Assets\Code\LevelTransition.cs" />
     <Compile Include="Assets\Code\Player.cs" />
     <Compile Include="Assets\Code\UIManager.cs" />

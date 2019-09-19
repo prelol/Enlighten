@@ -5,6 +5,7 @@ using UnityEngine.Sprites;
 
 public class Player : MonoBehaviour
 {
+    public GameObject playerLight;
 
     public float speed;
     public float jumpForce;
