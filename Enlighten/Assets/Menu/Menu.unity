@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 18664e63f4dd59641845a6dfa9312bd4,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -253,8 +253,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 449b8b29d4d49f549b23c4003486c0dc, type: 3}
     m_FontSize: 113
@@ -332,8 +330,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: dffcbab32f942604cb0bd7685492746d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -383,7 +379,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773039037}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.681726, y: 31.17693, z: 0}
+  m_LocalPosition: {x: -24.681726, y: 31.17693, z: 10}
   m_LocalScale: {x: 667.7055, y: 545.596, z: 2.598076}
   m_Children: []
   m_Father: {fileID: 1980343891}
@@ -663,8 +659,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 100
@@ -832,8 +826,6 @@ MonoBehaviour:
   onSelect:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   menuCanvas: {fileID: 1980343887}
   levelCanvas: {fileID: 810000118}
   playButton: {fileID: 0}
@@ -1032,11 +1024,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1980343891}
     m_Modifications:
-    - target: {fileID: 1409509429296774530, guid: cd177aa3085fee3479f5fc9cf5ae61cc,
-        type: 3}
-      propertyPath: m_Name
-      value: Play Button Image
-      objectReference: {fileID: 0}
     - target: {fileID: 1409509429296774531, guid: cd177aa3085fee3479f5fc9cf5ae61cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1142,6 +1129,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1409509429296774530, guid: cd177aa3085fee3479f5fc9cf5ae61cc,
+        type: 3}
+      propertyPath: m_Name
+      value: Play Button Image
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd177aa3085fee3479f5fc9cf5ae61cc, type: 3}
 --- !u!1001 &4315002575428066727
@@ -1151,11 +1143,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1980343891}
     m_Modifications:
-    - target: {fileID: 4315002575613494084, guid: a20569d1660ab2d4dbb28dd43c5dcefb,
-        type: 3}
-      propertyPath: m_Name
-      value: Exit Button Image
-      objectReference: {fileID: 0}
     - target: {fileID: 4315002575613494083, guid: a20569d1660ab2d4dbb28dd43c5dcefb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1260,6 +1247,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315002575613494084, guid: a20569d1660ab2d4dbb28dd43c5dcefb,
+        type: 3}
+      propertyPath: m_Name
+      value: Exit Button Image
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a20569d1660ab2d4dbb28dd43c5dcefb, type: 3}
