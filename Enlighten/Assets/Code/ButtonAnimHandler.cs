@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class ButtonAnimHandler : MonoBehaviour
 {
-    public Text menuText;
+    public Image menuText;
 
     Color initialTextColor = new Color();
-    Color glowColor = new Color(.2941f, .8549f, .7529f);
+    public Color glowColor = new Color(.2941f, .8549f, .7529f);
 
     [HideInInspector]
     public bool animDone;
