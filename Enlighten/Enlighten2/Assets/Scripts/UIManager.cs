@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
     private void Play()
     {
         if (!PlayerPrefs.HasKey("UnlockedLevel"))
-            SceneManager.LoadScene("Level01");
+            SceneManager.LoadScene("Level1");
 
         else
         {

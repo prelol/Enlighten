@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class ButtonAnimHandler : MonoBehaviour
 {
-    public Text menuText;
+    //public Text menuText;
 
-    Color initialTextColor = new Color();
-    Color glowColor = new Color(.2941f, .8549f, .7529f);
+    //Color initialTextColor = new Color();
+    //Color glowColor = new Color(.2941f, .8549f, .7529f);
 
     [HideInInspector]
     public bool animDone;
@@ -24,7 +24,7 @@ public class ButtonAnimHandler : MonoBehaviour
         anims = GetComponentsInChildren<Animator>();
         canHover = true;
         animDone = false;
-        initialTextColor = menuText.color;
+        //initialTextColor = menuText.color;
     }
 
     private void Update()
@@ -53,7 +53,7 @@ public class ButtonAnimHandler : MonoBehaviour
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Left Select") || anim.GetCurrentAnimatorStateInfo(0).IsName("Mid Select") || 
                 anim.GetCurrentAnimatorStateInfo(0).IsName("Right Select"))
             {
-                menuText.color = glowColor;
+                //menuText.color = glowColor;
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) { animDone = true; }
             }
         }
@@ -71,14 +71,14 @@ public class ButtonAnimHandler : MonoBehaviour
     public void OnMouseOver()
     {
         hovering = true;
-        menuText.color = glowColor;
+        //menuText.color = glowColor;
     }
 
     public void OnMouseExit()
     {
         hovering = false;
 
-        menuText.color = initialTextColor;
+        //menuText.color = initialTextColor;
 
         foreach (Animator anim in anims)
         {
@@ -99,7 +99,7 @@ public class ButtonAnimHandler : MonoBehaviour
 
     public void OnMouseDown()
     {
-        menuText.color = glowColor;
+        //menuText.color = glowColor;
 
         foreach (Animator anim in anims)
         {

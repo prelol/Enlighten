@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1.67
   m_LightVolumeOpacity: 0
-  m_ApplyToSortingLayers: d70d9266
+  m_ApplyToSortingLayers: 91d07f7d
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Color: {r: 0.16838734, g: 0.8301887, b: 0.67455643, a: 1}
   m_Intensity: 1.52
   m_LightVolumeOpacity: 0.125
-  m_ApplyToSortingLayers: 00000000d70d9266
+  m_ApplyToSortingLayers: 0000000091d07f7d
   m_LightCookieSprite: {fileID: 0}
   m_UseNormalMap: 0
   m_LightOrder: 0
@@ -192,6 +192,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -213,9 +214,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1720847831
-  m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingLayerID: 2105528465
+  m_SortingLayer: 1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 5139756435741454664, guid: ec3c6151d9c6eb24dab1f2d08fe59c7b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
