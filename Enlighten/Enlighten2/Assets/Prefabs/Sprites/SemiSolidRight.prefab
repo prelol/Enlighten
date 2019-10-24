@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7838911370467753740}
   - component: {fileID: 8680912031710695306}
   - component: {fileID: -5401264386586332928}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SemiSolidRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cd9f67547f6ffbb4b9d36d945f9346f3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
