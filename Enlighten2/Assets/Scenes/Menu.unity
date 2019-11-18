@@ -965,7 +965,7 @@ MonoBehaviour:
   playLevelButton: {fileID: 6170932483020972889, guid: 31f7cfe48c7961e49bbc13ff2d6b4d07,
     type: 3}
   exitButton: {fileID: 0}
-  sceneCount: 5
+  sceneCount: 10
 --- !u!4 &1928989691
 Transform:
   m_ObjectHideFlags: 0
@@ -1158,11 +1158,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1980343891}
     m_Modifications:
-    - target: {fileID: 1409509429296774530, guid: cd177aa3085fee3479f5fc9cf5ae61cc,
-        type: 3}
-      propertyPath: m_Name
-      value: Play Button Image
-      objectReference: {fileID: 0}
     - target: {fileID: 1409509429296774531, guid: cd177aa3085fee3479f5fc9cf5ae61cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1268,6 +1263,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1409509429296774530, guid: cd177aa3085fee3479f5fc9cf5ae61cc,
+        type: 3}
+      propertyPath: m_Name
+      value: Play Button Image
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd177aa3085fee3479f5fc9cf5ae61cc, type: 3}
 --- !u!1001 &4315002575428066727
@@ -1277,11 +1277,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1980343891}
     m_Modifications:
-    - target: {fileID: 4315002575613494084, guid: a20569d1660ab2d4dbb28dd43c5dcefb,
-        type: 3}
-      propertyPath: m_Name
-      value: Exit Button Image
-      objectReference: {fileID: 0}
     - target: {fileID: 4315002575613494083, guid: a20569d1660ab2d4dbb28dd43c5dcefb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1386,6 +1381,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4315002575613494084, guid: a20569d1660ab2d4dbb28dd43c5dcefb,
+        type: 3}
+      propertyPath: m_Name
+      value: Exit Button Image
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a20569d1660ab2d4dbb28dd43c5dcefb, type: 3}

@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
 
     ButtonAnimHandler btnHandler;
 
+    Sprite levelNum;
+
     #region References
     [SerializeField]
     private GameObject menuCanvas, levelCanvas;
@@ -77,7 +79,16 @@ public class UIManager : MonoBehaviour
 
             Button current = Instantiate(playLevelButton.gameObject, new Vector3(startingX + (x * 250), startingY + (y * -200), 0), Quaternion.identity).GetComponent<Button>();
             current.transform.SetParent(levelCanvas.transform, false);
-            current.GetComponentInChildren<Text>().text = (i + 1).ToString();
+            //current.GetComponentInChildren<Text>().text = (i + 1).ToString();
+            if (a == 9)
+            {
+                current.transform.GetChild(0).GetComponent<Image>().color = new Color(0f, 0f, 0f);
+                current.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true); //the child of the child that has two sprites
+            }
+            else
+            {
+                current.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load("GlowNumbers/NumberGlow (" + (i + 1) + ")", typeof(Sprite)) as Sprite;
+            }
             current.onClick.AddListener(delegate { PlayLevel(a + 1); });
 
             if (PlayerPrefs.GetInt("UnlockedLevel") < (a + 1))
