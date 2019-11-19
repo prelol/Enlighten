@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
     private void SetupCanvases()
     {
         SetupLevelButtons();
-        levelCanvas.SetActive(false);
+        //levelCanvas.SetActive(false);
     }
 
     private void SetupLevelButtons()
@@ -80,19 +80,38 @@ public class UIManager : MonoBehaviour
             Button current = Instantiate(playLevelButton.gameObject, new Vector3(startingX + (x * 250), startingY + (y * -200), 0), Quaternion.identity).GetComponent<Button>();
             current.transform.SetParent(levelCanvas.transform, false);
             //current.GetComponentInChildren<Text>().text = (i + 1).ToString();
-            if (a == 9)
-            {
-                current.transform.GetChild(0).GetComponent<Image>().color = new Color(0f, 0f, 0f);
-                current.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true); //the child of the child that has two sprites
-            }
-            else
-            {
-                current.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load("GlowNumbers/NumberGlow (" + (i + 1) + ")", typeof(Sprite)) as Sprite;
-            }
             current.onClick.AddListener(delegate { PlayLevel(a + 1); });
 
             if (PlayerPrefs.GetInt("UnlockedLevel") < (a + 1))
                 current.interactable = false;
+
+            if (a == 9)
+            {
+                current.GetComponent<Image>().sprite = Resources.Load("LevelIcons/levelbuttonchallenge", typeof(Sprite)) as Sprite;
+
+                if (current.interactable)
+                {
+                    current.transform.GetChild(0).GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+                    current.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(true); //the child of the child that has two sprites
+                }
+                else
+                {
+                    current.transform.GetChild(0).gameObject.SetActive(false);
+                    current.transform.GetChild(2).gameObject.SetActive(true);
+                } 
+            }
+            else
+            {
+                if (current.interactable)
+                {
+                    current.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load("GlowNumbers/NumberGlow (" + (i + 1) + ")", typeof(Sprite)) as Sprite;
+                }
+                else
+                {
+                    current.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load("RegNumbers/Number (" + (i + 1) + ")", typeof(Sprite)) as Sprite;
+                    current.transform.GetChild(1).gameObject.SetActive(true);
+                }
+            }
         }
     }
 
