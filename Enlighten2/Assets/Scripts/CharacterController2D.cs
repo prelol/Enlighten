@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Tilemaps;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController2D : MonoBehaviour
@@ -28,12 +29,17 @@ public class CharacterController2D : MonoBehaviour
     [Header("Controls")]
     [SerializeField] Joystick joystick;
 
+    [Space]
+    [Header("Tilemap Collision")]
+    [SerializeField] Tilemap gemTilemap;
+
     Rigidbody2D rb2d;
     SpriteRenderer sr;
 
     bool isGrounded = true;
     bool canJump = true;
     bool canMove = false;
+    bool canBreakGemBlock = false;
 
     float horzMovement;
 
@@ -86,8 +92,23 @@ public class CharacterController2D : MonoBehaviour
         {
             horzMovement = 0;
         }
+
         if (Input.GetKeyDown(KeyCode.Space) && canJump && isGrounded)
         {
+            int layerMask = 1 << 8;
+            RaycastHit2D topHit = Physics2D.Raycast(transform.position, Vector3.up, 15f, layerMask);
+            RaycastHit2D bottomHit = Physics2D.Raycast(transform.position, Vector3.down, 15f, layerMask);
+
+            if (gemTilemap != null && gemTilemap.name == topHit.collider.name)
+            {
+                canBreakGemBlock = true;
+            }
+
+            if (gemTilemap != null && gemTilemap.name == bottomHit.collider.name)
+            {
+                canBreakGemBlock = true;
+            }
+
             canJump = false;
             StartCoroutine("JumpCooldown");
             rb2d.AddForce(Vector2.up * jumpStrength);
@@ -144,6 +165,19 @@ public class CharacterController2D : MonoBehaviour
         if(col.transform.CompareTag("Spike"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        Vector3 hitPos = Vector3.zero;
+        if (canBreakGemBlock)
+        {
+            foreach (ContactPoint2D hitPoint in col.contacts)
+            {
+                hitPos.x = hitPoint.point.x - 0.01f * hitPoint.normal.x;
+                hitPos.y = hitPoint.point.y - 0.01f * hitPoint.normal.y;
+                gemTilemap.SetTile(gemTilemap.WorldToCell(hitPos), null);
+            }
+
+            canBreakGemBlock = false;
         }
     }
 
