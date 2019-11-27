@@ -23,7 +23,7 @@ public class ButtonAnimHandler : MonoBehaviour
     {
         anims = GetComponentsInChildren<Animator>();
         canHover = true;
-        animDone = false;
+        //animDone = false;
         //initialTextColor = menuText.color;
     }
 
@@ -55,6 +55,19 @@ public class ButtonAnimHandler : MonoBehaviour
             {
                 //menuText.color = glowColor;
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) { animDone = true; }
+
+                if (anim.GetCurrentAnimatorStateInfo(0).IsName("Mid Select") && animDone)
+                {
+                    anim.SetTrigger("Select Middle");
+                }
+                else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Left Select") && animDone)
+                {
+                    anim.SetTrigger("Select Left");
+                }
+                else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Right Select") && animDone)
+                {
+                    anim.SetTrigger("Select Right");
+                }
             }
         }
 
@@ -65,6 +78,11 @@ public class ButtonAnimHandler : MonoBehaviour
         else if (transform.name == "Play Button Image" && animDone)
         {
             UIManager.instance.onSelect.Invoke();
+        }
+        else if (transform.name == "Jump Button Image" && animDone)
+        {
+            FindObjectOfType<CharacterController2D>().jumpImgBtnPressed = true;
+            animDone = false;
         }
     }
 
@@ -106,7 +124,9 @@ public class ButtonAnimHandler : MonoBehaviour
             if (anim.transform.name == "Right")
             {
                 anim.SetBool("Right", false);
+                //anim.SetTrigger("Select Right");
                 anim.Play("Right Select");
+                //anim.speed = 1f;
 
                 if (anim.GetCurrentAnimatorStateInfo(0).loop)
                 {
@@ -115,12 +135,15 @@ public class ButtonAnimHandler : MonoBehaviour
                 else
                 {
                     canHover = true;
+                    //anim.speed = 0f;
                 }
             }
             else if (anim.transform.name == "Left")
             {
                 anim.SetBool("Left", false);
+                //anim.SetTrigger("Select Left");
                 anim.Play("Left Select");
+                //anim.speed = 1f;
 
                 if (anim.GetCurrentAnimatorStateInfo(0).loop)
                 {
@@ -129,12 +152,15 @@ public class ButtonAnimHandler : MonoBehaviour
                 else
                 {
                     canHover = true;
+                    //anim.speed = 0f;
                 }
             }
             else if (anim.transform.name == "Middle")
             {
                 anim.SetBool("Middle", false);
+                //anim.SetTrigger("Select Middle");
                 anim.Play("Mid Select");
+                //anim.speed = 1f;
 
                 if (anim.GetCurrentAnimatorStateInfo(0).loop)
                 {
@@ -143,6 +169,7 @@ public class ButtonAnimHandler : MonoBehaviour
                 else
                 {
                     canHover = true;
+                    //anim.speed = 0f;
                 }
             }
         }

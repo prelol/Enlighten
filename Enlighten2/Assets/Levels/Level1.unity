@@ -213,7 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 19873705}
   - component: {fileID: 19873704}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Gem Tiles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3081,7 +3081,7 @@ GameObject:
   - component: {fileID: 717858287}
   - component: {fileID: 717858286}
   - component: {fileID: 717858285}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Gem Blocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3274,7 +3274,7 @@ Tilemap:
   m_AnimatedTiles: {}
   m_TileAssetArray:
   - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 366f62d98e65b0f4f814c97735e30acc, type: 2}
+    m_Data: {fileID: 11400000, guid: ced4491d87a54594fa5df62d55e1bf8e, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: ab0001e86bee0d142b7cabae0b7d7ca6, type: 2}
   - m_RefCount: 1
@@ -3285,7 +3285,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: a49ca2b165f5e6347b262b881bdcde25, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: 343981492f7cd5f408bd393f5f1664d4, type: 3}
+    m_Data: {fileID: 21300000, guid: f9caae249c9120f48b30fd7a093f8cb7, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: af791538cec30424396fbf9f987545d6, type: 3}
   - m_RefCount: 1
@@ -3316,7 +3316,7 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 6
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  m_AnimationFrameRate: 1
+  m_AnimationFrameRate: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -12, y: -26, z: 0}
   m_Size: {x: 72, y: 30, z: 1}
@@ -42810,11 +42810,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Controls
       objectReference: {fileID: 0}
-    - target: {fileID: 1555617805885440518, guid: b68b8ec0b0b684ce3a3fd58320272e59,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1555617805885440514, guid: b68b8ec0b0b684ce3a3fd58320272e59,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -42930,6 +42925,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 7801959563468654732}
+    - target: {fileID: 541159948438425006, guid: b68b8ec0b0b684ce3a3fd58320272e59,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 478
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68b8ec0b0b684ce3a3fd58320272e59, type: 3}
 --- !u!1 &3770408902052707682
@@ -43274,6 +43274,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8828264104620319724, guid: 82459e4c49682974ba683f3d0a5613b4,
         type: 3}
+      propertyPath: crystalToSpawn.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828264104620319724, guid: 82459e4c49682974ba683f3d0a5613b4,
+        type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 8135886327928831876}
@@ -43282,6 +43287,30 @@ PrefabInstance:
       propertyPath: gemTilemap
       value: 
       objectReference: {fileID: 717858289}
+    - target: {fileID: 8828264104620319724, guid: 82459e4c49682974ba683f3d0a5613b4,
+        type: 3}
+      propertyPath: caveTile
+      value: 
+      objectReference: {fileID: 11400000, guid: d01ed3fd940a16a4f84e56d3553862af,
+        type: 2}
+    - target: {fileID: 8828264104620319724, guid: 82459e4c49682974ba683f3d0a5613b4,
+        type: 3}
+      propertyPath: crystalToSpawn.Array.data[0]
+      value: 
+      objectReference: {fileID: 7656908751209080063, guid: e088a4ca6970e854e9ba597009711592,
+        type: 3}
+    - target: {fileID: 8828264104620319724, guid: 82459e4c49682974ba683f3d0a5613b4,
+        type: 3}
+      propertyPath: crystalToSpawn.Array.data[1]
+      value: 
+      objectReference: {fileID: 2032614869862941335, guid: 4ff7bc556a051de4185e5f8927f374c8,
+        type: 3}
+    - target: {fileID: 8828264104620319724, guid: 82459e4c49682974ba683f3d0a5613b4,
+        type: 3}
+      propertyPath: crystalToSpawn.Array.data[2]
+      value: 
+      objectReference: {fileID: 1282231908118000334, guid: f373a958dc166f84182546ba51e9272a,
+        type: 3}
     - target: {fileID: 8828264104620319726, guid: 82459e4c49682974ba683f3d0a5613b4,
         type: 3}
       propertyPath: m_LocalPosition.x

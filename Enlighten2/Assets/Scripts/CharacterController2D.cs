@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 [RequireComponent(typeof(Rigidbody2D))]
 public class CharacterController2D : MonoBehaviour
 {
-    enum Movement { none, walking, jumping, falling}
+    enum Movement { none, walking, jumping, falling }
 
     [Header("Movement")]
     [SerializeField] float speed = 5f;
@@ -30,8 +30,11 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] Joystick joystick;
 
     [Space]
-    [Header("Tilemap Collision")]
+    [Header("Tilemap")]
     [SerializeField] Tilemap gemTilemap;
+    [SerializeField] TileBase caveTile;
+    [Tooltip("The crystal to spawn after the gem block is interacted with.")]
+    [SerializeField] List<GameObject> crystalToSpawn = new List<GameObject>();
 
     Rigidbody2D rb2d;
     SpriteRenderer sr;
@@ -40,6 +43,8 @@ public class CharacterController2D : MonoBehaviour
     bool canJump = true;
     bool canMove = false;
     bool canBreakGemBlock = false;
+
+    [HideInInspector] public bool jumpImgBtnPressed = false;
 
     float horzMovement;
 
@@ -95,7 +100,7 @@ public class CharacterController2D : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && canJump && isGrounded)
         {
-            int layerMask = 1 << 8;
+            int layerMask = 1 << 10;
             RaycastHit2D topHit = Physics2D.Raycast(transform.position, Vector3.up, 15f, layerMask);
             RaycastHit2D bottomHit = Physics2D.Raycast(transform.position, Vector3.down, 15f, layerMask);
 
@@ -112,9 +117,24 @@ public class CharacterController2D : MonoBehaviour
             canJump = false;
             StartCoroutine("JumpCooldown");
             rb2d.AddForce(Vector2.up * jumpStrength);
-        } else if(jumpPressed && canJump && isGrounded)
+        } else if (jumpImgBtnPressed && canJump && isGrounded)//else if(jumpPressed && canJump && isGrounded)
         {
-            jumpPressed = false;
+            int layerMask = 1 << 10;
+            RaycastHit2D topHit = Physics2D.Raycast(transform.position, Vector3.up, 15f, layerMask);
+            RaycastHit2D bottomHit = Physics2D.Raycast(transform.position, Vector3.down, 15f, layerMask);
+
+            if (gemTilemap != null && gemTilemap.name == topHit.collider.name)
+            {
+                canBreakGemBlock = true;
+            }
+
+            if (gemTilemap != null && gemTilemap.name == bottomHit.collider.name)
+            {
+                canBreakGemBlock = true;
+            }
+
+            //jumpPressed = false;
+            jumpImgBtnPressed = false;
             canJump = false;
             StartCoroutine("JumpCooldown");
             rb2d.AddForce(Vector2.up * jumpStrength);
@@ -172,9 +192,13 @@ public class CharacterController2D : MonoBehaviour
         {
             foreach (ContactPoint2D hitPoint in col.contacts)
             {
-                hitPos.x = hitPoint.point.x - 0.01f * hitPoint.normal.x;
-                hitPos.y = hitPoint.point.y - 0.01f * hitPoint.normal.y;
-                gemTilemap.SetTile(gemTilemap.WorldToCell(hitPos), null);
+                hitPos.x = hitPoint.point.x - .5f * hitPoint.normal.x;
+                hitPos.y = hitPoint.point.y - .5f * hitPoint.normal.y;
+                gemTilemap.SetTile(gemTilemap.WorldToCell(hitPos), caveTile);
+
+                
+                GameObject crystal = Instantiate(crystalToSpawn[Random.Range(0, crystalToSpawn.Capacity)], hitPos, Quaternion.identity);
+                crystal.GetComponent<Floater>().canFloat = false;
             }
 
             canBreakGemBlock = false;
