@@ -20,6 +20,14 @@ public class Floater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!canFloat)
+        {
+            Collider2D lightCollider;
+            int layerMask = 1 << 11;
+            lightCollider = Physics2D.OverlapCircle(transform.position, 2f, layerMask);
+            Destroy(lightCollider.gameObject);
+        }
+
         originalY = transform.position.y;
         targetPos = originalY + spawnOffsetY; 
     }

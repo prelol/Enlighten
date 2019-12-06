@@ -54,6 +54,8 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 1
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -124,6 +126,8 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -288,9 +292,19 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  crystalLayer:
+    serializedVersion: 2
+    m_Bits: 1024
   anim: {fileID: 1639991476435912070}
   startAnim: {fileID: 0}
   joystick: {fileID: 0}
+  gemTilemap: {fileID: 0}
+  caveTile: {fileID: 11400000, guid: d01ed3fd940a16a4f84e56d3553862af, type: 2}
+  crystalToSpawn:
+  - {fileID: 7656908751209080063, guid: e088a4ca6970e854e9ba597009711592, type: 3}
+  - {fileID: 2032614869862941335, guid: 4ff7bc556a051de4185e5f8927f374c8, type: 3}
+  - {fileID: 1282231908118000334, guid: f373a958dc166f84182546ba51e9272a, type: 3}
+  jumpImgBtnPressed: 0
   jumpPressed: 0
 --- !u!70 &4410348330511542447
 CapsuleCollider2D:

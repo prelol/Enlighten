@@ -19,6 +19,7 @@ public class CharacterController2D : MonoBehaviour
     [Header("Physics")]
     [SerializeField] Transform playerFeet;
     [SerializeField] LayerMask groundLayer;
+    [SerializeField] LayerMask crystalLayer;
 
     [Space]
     [Header("Animation")]
@@ -104,33 +105,45 @@ public class CharacterController2D : MonoBehaviour
             RaycastHit2D topHit = Physics2D.Raycast(transform.position, Vector3.up, 15f, layerMask);
             RaycastHit2D bottomHit = Physics2D.Raycast(transform.position, Vector3.down, 15f, layerMask);
 
-            if (gemTilemap != null && gemTilemap.name == topHit.collider.name)
+            if (gemTilemap != null && topHit.collider != null)
             {
-                canBreakGemBlock = true;
+                if (gemTilemap.name == topHit.collider.name)
+                {
+                    canBreakGemBlock = true;
+                }
             }
 
-            if (gemTilemap != null && gemTilemap.name == bottomHit.collider.name)
+            if (gemTilemap != null && bottomHit.collider != null)
             {
-                canBreakGemBlock = true;
+                if (gemTilemap.name == bottomHit.collider.name)
+                {
+                    canBreakGemBlock = true;
+                }
             }
 
             canJump = false;
             StartCoroutine("JumpCooldown");
             rb2d.AddForce(Vector2.up * jumpStrength);
-        } else if (jumpImgBtnPressed && canJump && isGrounded)//else if(jumpPressed && canJump && isGrounded)
+        } else if (jumpImgBtnPressed && canJump && isGrounded)
         {
             int layerMask = 1 << 10;
             RaycastHit2D topHit = Physics2D.Raycast(transform.position, Vector3.up, 15f, layerMask);
             RaycastHit2D bottomHit = Physics2D.Raycast(transform.position, Vector3.down, 15f, layerMask);
 
-            if (gemTilemap != null && gemTilemap.name == topHit.collider.name)
+            if (gemTilemap != null && topHit.collider != null)
             {
-                canBreakGemBlock = true;
+                if (gemTilemap.name == topHit.collider.name)
+                {
+                    canBreakGemBlock = true;
+                }
             }
 
-            if (gemTilemap != null && gemTilemap.name == bottomHit.collider.name)
+            if (gemTilemap != null && bottomHit.collider != null)
             {
-                canBreakGemBlock = true;
+                if (gemTilemap.name == bottomHit.collider.name)
+                {
+                    canBreakGemBlock = true;
+                }
             }
 
             //jumpPressed = false;
@@ -194,11 +207,12 @@ public class CharacterController2D : MonoBehaviour
             {
                 hitPos.x = hitPoint.point.x - .5f * hitPoint.normal.x;
                 hitPos.y = hitPoint.point.y - .5f * hitPoint.normal.y;
-                gemTilemap.SetTile(gemTilemap.WorldToCell(hitPos), caveTile);
-
-                
-                GameObject crystal = Instantiate(crystalToSpawn[Random.Range(0, crystalToSpawn.Capacity)], hitPos, Quaternion.identity);
-                crystal.GetComponent<Floater>().canFloat = false;
+                if (gemTilemap.GetTile(gemTilemap.WorldToCell(hitPos)).name != caveTile.name)
+                {
+                    gemTilemap.SetTile(gemTilemap.WorldToCell(hitPos), caveTile);
+                    GameObject crystal = Instantiate(crystalToSpawn[Random.Range(0, crystalToSpawn.Capacity)], hitPos, Quaternion.identity);
+                    crystal.GetComponent<Floater>().canFloat = false;
+                }
             }
 
             canBreakGemBlock = false;
@@ -207,7 +221,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(playerFeet.position, .2f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(playerFeet.position, .2f, groundLayer) || Physics2D.OverlapCircle(playerFeet.position, .2f, crystalLayer);
         rb2d.velocity = new Vector2(horzMovement * speed, rb2d.velocity.y);
     }
 
